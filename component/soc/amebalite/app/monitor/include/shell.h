@@ -10,6 +10,12 @@
 #ifndef _RTK_CONSOL_H_
 #define _RTK_CONSOL_H_
 
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#ifndef IN
+#define IN
+#endif
+#endif
+
 #ifdef CONFIG_MP_INCLUDED
 #define SHELL_TASK_FUNC_STACK_SIZE (1024 * 4)
 #elif (defined (CONFIG_AS_INIC_AP) || defined(CONFIG_SINGLE_CORE_WIFI))
@@ -127,4 +133,11 @@ void shell_loguratRx_ipc_int(void *Data, u32 IrqStatus, u32 ChanNum);
 #define RtlConsolTaskRom		shell_task_rom
 
 extern u32 shell_interrupt_on;
+
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#ifdef IN
+#undef IN
+#endif
+#endif
+
 #endif //_RTK_CONSOL_H_

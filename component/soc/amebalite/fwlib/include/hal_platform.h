@@ -383,10 +383,17 @@
  *****************************************************************************/
 #define RRAM_DEV			((RRAM_TypeDef			*) RETENTION_RAM_BASE)		/*retention mem */
 
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#define UART0_DEV			UART0_REG_BASE		/*hp uart0 */
+#define UART1_DEV			UART1_REG_BASE		/*hp uart1 */
+#define UART2_DEV			UART2_REG_BASE		/*hp uart2 */
+#define UART3_DEV			UART3_REG_BASE		/*hp uart3_bt*/
+#else
 #define UART0_DEV			((UART_TypeDef			*) UART0_REG_BASE)		/*hp uart0 */
 #define UART1_DEV			((UART_TypeDef			*) UART1_REG_BASE)		/*hp uart1 */
 #define UART2_DEV			((UART_TypeDef			*) UART2_REG_BASE)		/*hp uart2 */
 #define UART3_DEV			((UART_TypeDef			*) UART3_REG_BASE)		/*hp uart3_bt*/
+#endif
 #define UART0_DEV_S			((UART_TypeDef			*) UART0_REG_BASE_S)		/*hp uart0 secure */
 #define UART1_DEV_S			((UART_TypeDef			*) UART1_REG_BASE_S)		/*hp uart1 secure*/
 #define UART2_DEV_S			((UART_TypeDef			*) UART2_REG_BASE_S)		/*hp uart2 secrue*/
@@ -395,8 +402,13 @@
 #define LOGUART_DEV			((LOGUART_TypeDef		*) UARTLOG_REG_BASE)
 #define LOGUART_DEV_S			((LOGUART_TypeDef		*) UARTLOG_REG_BASE_S)
 
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#define SPI0_DEV			SPI0_REG_BASE		/*hp spi0 */
+#define SPI1_DEV			SPI1_REG_BASE		/*hp spi1 */
+#else
 #define SPI0_DEV			((SPI_TypeDef			*) SPI0_REG_BASE)		/*hp spi0 */
 #define SPI1_DEV			((SPI_TypeDef			*) SPI1_REG_BASE)		/*hp spi1 */
+#endif
 #define SPI0_DEV_S			((SPI_TypeDef			*) SPI0_REG_BASE_S)		/*hp spi0 secure */
 #define SPI1_DEV_S			((SPI_TypeDef			*) SPI1_REG_BASE_S)		/*hp spi1 secure */
 
@@ -408,9 +420,15 @@
 #define ADC_S				((ADC_TypeDef			*) ADC_REG_BASE_S)
 #define CMP_DEV				((CMP_TypeDef			*) CMP_REG_BASE)
 #define CMP_DEV_S			((CMP_TypeDef			*) CMP_REG_BASE_S)
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#define I2C0_DEV			I2C0_REG_BASE		/*lp i2c0 */
+#define I2C1_DEV			I2C1_REG_BASE		/*hp i2c1 */
+#define I2C2_DEV			I2C2_REG_BASE		/*hp i2c2 */
+#else
 #define I2C0_DEV			((I2C_TypeDef			*) I2C0_REG_BASE)		/*lp i2c0 */
 #define I2C1_DEV			((I2C_TypeDef			*) I2C1_REG_BASE)		/*hp i2c1 */
 #define I2C2_DEV			((I2C_TypeDef			*) I2C2_REG_BASE)		/*hp i2c2 */
+#endif
 #define I2C1_DEV_S			((I2C_TypeDef			*) I2C1_REG_BASE_S)		/*hp i2c1 secure */
 #define TIM0				((RTIM_TypeDef			*) TIMER0_REG_BASE)
 #define TIM1				((RTIM_TypeDef			*) TIMER1_REG_BASE)

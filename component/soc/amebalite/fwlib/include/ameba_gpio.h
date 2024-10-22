@@ -7,6 +7,12 @@
 #ifndef _AMEBA_GPIO_H_
 #define _AMEBA_GPIO_H_
 
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#ifndef IN
+#define IN
+#endif
+#endif
+
 /** @addtogroup GPIO
   * @verbatim
   *****************************************************************************************
@@ -441,6 +447,12 @@ _LONG_CALL_ void GPIO_LevelSync(u32 GPIO_Port, u32 NewState);
 
 
 /* MANUAL_GEN_END */
+
+#if defined(CHIP_PROJECT) && CHIP_PROJECT
+#ifdef IN
+#undef IN
+#endif
+#endif
 
 #endif
 
