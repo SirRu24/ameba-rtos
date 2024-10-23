@@ -77,15 +77,32 @@ MODULE_IFLAGS += -I$(BASEDIR)/component/ui/LVGL/lv_drivers/interfaces
 MODULE_IFLAGS += -I$(BASEDIR)/component/ui/LVGL/port/amebasmart
 endif
 
+ifeq ($(CONFIG_MATTER_EN),y)
+MODULE_IFLAGS += -I$(BASEDIR)/component/application/matter/example
+endif
+
 #*****************************************************************************#
 #                                  VARIABLES                                  #
 #*****************************************************************************#
+ifeq ($(CONFIG_MATTER_EN),y)
+#Matter Example
+DIR = $(BASEDIR)/component/application/matter/example
+else
 DIR = $(BASEDIR)/component/example
+endif
 RM_DIRS = 'example/audio_mp3|example/audio_amr|example/audio_helix_aac|example/audio_helix_mp3|example/audio_m4a_selfparse|example/audio_m4a|example/audio_pcm_upload|example/audio_hls'
 
 ifneq ($(EXAMPLE),)
+ifeq ($(CONFIG_MATTER_EN),y)
+TARGET_DIR = $(DIR)/$(EXAMPLE)
+else
 TARGET_DIR = $(shell find $(DIR) -maxdepth 2 -type d|grep -vE $(RM_DIRS) | grep -w $(EXAMPLE))
+endif
+ifeq ($(CONFIG_MATTER_EN),y)
+vpath %.c $(TARGET_DIR) $(DIR)
+else
 vpath %.c $(TARGET_DIR)
+endif
 endif
 
 #*****************************************************************************#

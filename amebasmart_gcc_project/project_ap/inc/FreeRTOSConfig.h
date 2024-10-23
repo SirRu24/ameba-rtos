@@ -196,4 +196,8 @@ void vConfigureSMPSendIPI(uint32_t ulCoreID);
 #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() do {} while (0)
 #define portGET_RUN_TIME_COUNTER_VALUE() (*((volatile uint32_t*)(0x42009000 + 0x004)))  /* DEBUGTIMER_REG_BASE: 0x42009000, COUNT REGISTER offset: 0x004 */
 
+#if defined(CONFIG_MATTER) && CONFIG_MATTER
+#include "FreeRTOSConfig_matter.h"
+#endif /* CONFIG_MATTER */
+
 #endif /* FREERTOS_CONFIG_H */
