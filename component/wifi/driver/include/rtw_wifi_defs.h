@@ -796,8 +796,6 @@ enum rtw_event_indicate {
 
 	/* matter modifications*/
 #if defined(CONFIG_MATTER) && CONFIG_MATTER
-	WIFI_EVENT_CONNECT,
-	WIFI_EVENT_DISCONNECT,
 	WIFI_EVENT_DHCP6_DONE,
 #endif
 	/* flash event */

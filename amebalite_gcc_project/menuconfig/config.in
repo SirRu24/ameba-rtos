@@ -111,7 +111,9 @@ comment '< CONFIG BT'
 bool "Enable BT"														CONFIG_BT_MENU
 # !!Notice that "[ ]" both side and "$CONFIG_XXX" should has a whitespace
 if [ "$CONFIG_BT_MENU" = "y" ]; then
-	bool "BLE_Matter_Adapter"	CONFIG_BLE_MATTER_ADAPTER
+	if [ "$CONFIG_MATTER_EN" = "y" ]; then
+		bool "BLE_Matter_Adapter"	CONFIG_BLE_MATTER_ADAPTER
+	fi
 	if [ "$CONFIG_AP_CORE_KM4" = "y" ]; then
 		define_bool CONFIG_BT_FOR_KM4 y
 		define_bool CONFIG_FTL_ENABLED_FOR_KM4 y

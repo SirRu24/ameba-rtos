@@ -406,7 +406,7 @@ void at_wlconn(void *arg)
 end:
 #if defined(CONFIG_MATTER) && CONFIG_MATTER
 	if ((ret == RTW_SUCCESS) && (error_no == 0)) {
-		wifi_indication(WIFI_EVENT_CONNECT, NULL, 0, 0);
+		wifi_indication(WIFI_EVENT_STA_ASSOC, NULL, 0, 0);
 	}
 #endif
 	rtos_mem_free((void *)p_wifi_setting);

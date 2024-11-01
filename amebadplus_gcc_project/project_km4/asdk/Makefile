@@ -148,7 +148,7 @@ endif
 
 #matter
 ifeq ($(CONFIG_MATTER_EN), y)
-LINK_THIRD_APP_LIB += -Wl,--start-group -Wl,--whole-archive $(ROOTDIR)/lib/application/lib_main.a -Wl,--no-whole-archive $(ROOTDIR)/lib/application/libCHIP.a -Wl,--end-group # --whole-archive forces linker to override weak functions with strong ones
+LINK_THIRD_APP_LIB += -Wl,--start-group $(ROOTDIR)/lib/application/lib_main.a $(ROOTDIR)/lib/application/libCHIP.a -Wl,--end-group
 endif
 
 #add all app lib in this file
@@ -687,7 +687,7 @@ endif
 ifeq ($(CONFIG_MATTER_EN), y)
 	@make -C $(MATTER_BUILDDIR)/make/chip_main clean
 	@make -C $(MATTER_BUILDDIR)/make/chip clean
-	@make -C $(MATTER_BUILDDIR)/make/application/matter clean
+	@make -C $(MATTER_BUILDDIR)/make clean
 	@rm -rf $(BASEDIR)/tools/matter/codegen_helpers/gen
 endif
 
